@@ -1,0 +1,27 @@
+<h1>Lista de Compras</h1>
+
+<div>
+  <input type="text" id="produto" [(ngModel)]="inputProduto" />
+  <input type="number" id="quantidade" [(ngModel)]="inputQuantidade" />
+  <button (click)="adicionarProduto()">ADICIONAR</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Produto</th>
+      <th>Quantidade</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let produto of listaProdutos">
+      <td>{{ produto.descricao }}</td>
+      <td>
+        <button (click)="remQuantidade(produto.id)">-</button>{{ produto.quantidade
+        }}<button (click)="addQuantidade(produto.id)">+</button>
+      </td>
+      <td><button (click)="deletarProduto(produto.id)">Excluir</button></td>
+    </tr>
+  </tbody>
+</table>
