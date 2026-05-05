@@ -1,0 +1,54 @@
+<div class="CadastroConta">
+  <h3>Cadastro de Conta</h3>
+  <div class="CadastroConta__formulario">
+    <input
+      type="text"
+      placeholder="Titular da Conta"
+      [(ngModel)]="novaConta.titular"
+    />
+    <input
+      type="text"
+      placeholder="CPF do Titular"
+      [(ngModel)]="novaConta.cpf"
+    />
+    <select (change)="alterarTipoConta($event)">
+      <option *ngFor="let conta of tipoConta" [value]="conta.codigo">
+        {{ conta.descricao }}
+      </option>
+    </select>
+    <input
+      type="number"
+      placeholder="Valor do Depósito"
+      [(ngModel)]="novaConta.valorDeposito"
+    />
+    <input
+      *ngIf="novaConta.tipoConta == 'CC'"
+      type="number"
+      placeholder="Limite da Conta"
+      [(ngModel)]="novaConta.limiteConta"
+    />
+    <input
+      *ngIf="novaConta.tipoConta == 'CP'"
+      type="number"
+      placeholder="Taxa de Rendimento"
+      [(ngModel)]="novaConta.taxaRendimento"
+    />
+    <button (click)="adicionarConta()">Adicionar</button>
+  </div>
+</div>
+
+<div class="ListaConta">
+  <div class="ListaConta__filtro">
+    <select (change)="aplicarFiltroConta($event)">
+      <option value="" selected>Todas as Contas</option>
+      <option *ngFor="let conta of tipoConta" [value]="conta.codigo">
+        {{ conta.descricao }}
+      </option>
+    </select>
+  </div>
+  <div *ngFor="let conta of listarContasFiltradas()">
+    <span>{{ conta.titular }} ({{ conta.cpf }})</span>
+    <span>Tipo Conta: {{ conta.tipoConta }}</span>
+    <button (click)="encerrarConta(conta.cpf)">Encerrar Conta</button>
+  </div>
+</div>

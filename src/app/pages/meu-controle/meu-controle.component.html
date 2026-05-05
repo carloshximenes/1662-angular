@@ -1,0 +1,49 @@
+<div class="Formulario">
+  <input
+    type="text"
+    placeholder="Descrição"
+    [(ngModel)]="novaReceita.descricao"
+  />
+  <select [(ngModel)]="novaReceita.tipo">
+    <option *ngFor="let tipo of tiposReceita" [value]="tipo">{{ tipo }}</option>
+  </select>
+  <input type="number" placeholder="Valor" [(ngModel)]="novaReceita.valor" />
+  <button (click)="adicionarReceita()">Adicionar</button>
+</div>
+
+<div class="Informativos">
+  <div class="Informativos__container">
+    <span>Saldo Atual</span>
+    <h4>{{ valoresEntrada() - valoresSaida() | currency: "BRL" }}</h4>
+  </div>
+  <div class="Informativos__container">
+    <span>Total Gastos (Saídas)</span>
+    <h4>{{ valoresSaida() | currency: "BRL" }}</h4>
+  </div>
+  <div class="Informativos__container">
+    <span>Total Receita (Entradas)</span>
+    <h4>{{ valoresEntrada() | currency: "BRL" }}</h4>
+  </div>
+</div>
+
+<div class="Tabela">
+  <table>
+    <thead>
+      <tr>
+        <th>Descrição</th>
+        <th>Tipo</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let receita of receitas">
+        <td>{{ receita.descricao }}</td>
+        <td [ngClass]="['tipoReceita', receita.tipo]">
+          {{ receita.tipo }}
+        </td>
+        <!-- <td class="tipoReceita">{{ receita.tipo }}</td> -->
+        <td>{{ receita.valor | currency: "BRL" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

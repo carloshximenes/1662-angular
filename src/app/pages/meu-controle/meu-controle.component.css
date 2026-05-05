@@ -1,0 +1,20 @@
+.tipoReceita {
+  border: 2px solid black;
+  border-radius: 99px;
+  padding: 2px 8px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+
+  &.Entrada {
+    background: #2772c3;
+    border-color: #0a54a1;
+  }
+
+  &.Saída {
+    background: #c32727;
+    border-color: #a10a0a;
+  }
+}

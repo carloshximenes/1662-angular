@@ -3,10 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CrudService } from './services/crud.service';
 import { ListaCompraComponent } from './components/lista-compra/lista-compra.component';
+import { SistemaBancarioComponent } from './pages/sistema-bancario/sistema-bancario.component';
+import { MeuControleComponent } from './pages/meu-controle/meu-controle.component';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, FormsModule, ListaCompraComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ListaCompraComponent,
+    SistemaBancarioComponent,
+    MeuControleComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [],
